@@ -1,0 +1,59 @@
+{% load static %}
+{% load sudoku_filters %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sudoku Solver</title>
+    <link rel="stylesheet" href="{% static 'sudoku/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>Insira o Sudoku</h1>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {% for i in range_9 %}
+                <tr>
+                    {% for j in range_9 %}
+                        {% with key=i|stringformat:"d"|add:","|add:j|stringformat:"d" %}
+                            {% if key in fixed_cells %}
+                                <td class="fixed">
+                                    <input
+                                        type="number" min="1" max="9" inputmode="numeric" pattern="[1-9]*"
+                                        name="cell_{{ i }}_{{ j }}"
+                                        value="{% if board|get_item:i|get_item:j != 0 %}{{ board|get_item:i|get_item:j }}{% endif %}"
+                                        readonly
+                                    >
+                                </td>
+                            {% else %}
+                                <td>
+                                    <input
+                                        type="number" min="1" max="9" inputmode="numeric" pattern="[1-9]*"
+                                        name="cell_{{ i }}_{{ j }}"
+                                        value="{% if board|get_item:i|get_item:j != 0 %}{{ board|get_item:i|get_item:j }}{% endif %}"
+                                    >
+                                </td>
+                            {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        <button type="submit">Resolver</button>
+    </form>
+
+    {% if board %}
+        <h2>Solução:</h2>
+        <table>
+            {% for row in board %}
+                <tr>
+                    {% for val in row %}
+                        <td>{{ val }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</div>
+</body>
+</html>

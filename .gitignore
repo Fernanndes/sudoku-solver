@@ -1,0 +1,45 @@
+# Ambiente virtual
+.venv/
+venv/
+ENV/
+env/
+
+# Arquivos do PyCharm
+.idea/
+
+# Bytecode do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos temporários e de backup
+*.log
+*.pot~
+*.swp
+*.swo
+*.tmp
+
+# SQLite
+*.sqlite3
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos compilados do Cython
+*.c
+*.so
+
+# Arquivos de migração desnecessários (opcional)
+# Você pode deixar isso se quiser versionar as migrações
+# sudoku/migrations/
+
+# Arquivos de coverage/testes
+htmlcov/
+.coverage
+.cache
+.pytest_cache/
+
+# Arquivos de dependência locais
+pip-log.txt
+pip-delete-this-directory.txt
