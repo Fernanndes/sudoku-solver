@@ -15,7 +15,7 @@ Desenvolvido com **Python**, **Django** e **HTML/CSS**, este projeto recebe um t
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seunome/sudoku-solver.git
+git clone https://github.com/Fernanndes/sudoku-solver.git
 cd sudoku-solver
 
 # Crie e ative o ambiente virtual
